@@ -1,0 +1,16 @@
+<body class="fix-header">
+        <!-- /page content -->
+    <?php 
+      echo $nav;
+    ?>
+	
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Blank Starter page</h3> </div>
+                    </div>
+                </div>
+
+    <?php 
+      echo $footer;
+    ?>

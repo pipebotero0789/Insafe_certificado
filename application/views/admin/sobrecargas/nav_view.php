@@ -52,7 +52,6 @@
                         </ul>
                         <!-- /.dropdown-messages -->
                     </li>
-                    <li><?php echo form_dropdown('proyecto_id', $datos["Proyecto"], $this->session->userdata('proyecto_id'), 'id="proyecto_id" class="form-control select-proyecto" required="true" onchange="guardarProyecto()"'); ?></li>
                     <!-- .Task dropdown -->
                     <!--
                     <li class="dropdown">
@@ -308,7 +307,7 @@
                 <?php 
                     }
                 } 
-                if ($this->session->userdata('rol_id') ==  $this->menutotal) {
+                if ($this->session->userdata('rol_id') ==  2) {
                 ?>
                     <li>
                         <a href="<?= base_url().$this->session->userdata('rol_index'); ?>" class="waves-effect">

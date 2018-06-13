@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'insafe.com.co',
-	'username' => 'insafe_userinsafe',
-	'password' => 'Z)y=r0rbVinH',
-	'database' => 'insafe_dbinsafe',
+	'username' => 'insafe_certificado',
+	'password' => 'CertificadosInsafe',
+	'database' => 'insafe_certificado',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

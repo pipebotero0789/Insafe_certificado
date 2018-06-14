@@ -6,6 +6,7 @@ class Certificado extends MY_Controller {
 	public function __construct() 
     {
         parent::__construct();
+        $this->load->model('crud/Crud_certificado');
         if (is_null($this->session->userdata('id'))) {
             redirect($this->index);
         }
@@ -63,12 +64,40 @@ class Certificado extends MY_Controller {
             }
             $this->db->insert_batch('produccion_certificado', $data_excel);
             // @unlink($data['full_path']);
-            $mensaje = "el archivo se subio correctamente";
+            $mensaje = -1;
             $this->index($mensaje);
         }else{
-            $mensaje = "ocurrio un problema";
+            $mensaje = -2;
             $this->index($mensaje);
         }
+    }
+
+     public function lista($mensaje = null){   
+       $this->load->view('admin/sobrecargas/head_view');
+        $dataSend = array(
+            "datos" =>  array(
+                'noticias' => $this->Crud_noticias->GetDatosTotales(5),
+                'listadomenu' => $this->ordenarMenu($this->session->userdata('rol_id')),
+                'Titulo' => 'Lista Certificados',
+                'TipoContenido' => 'Dashboard'
+            )
+        );
+        $datoNav = $this->load->view('admin/sobrecargas/nav_view',$dataSend,TRUE);
+        $datoDatos = $this->load->view('admin/adminJS/datos_js_lista',null,TRUE);
+        $dataSend = array(
+            "datos" => $datoDatos
+        );
+        $datosEnvio = array(
+            'certificados' => $this->Crud_certificado->GetDatosTotal()
+        );
+        $dataFooter = $this->load->view('admin/sobrecargas/footer_view',$dataSend,TRUE);
+        $dataSend = array(
+            "footer" => $dataFooter,
+            'nav' => $datoNav,
+            'data' => $datosEnvio,
+            'mensaje' => $mensaje,
+        );
+        $this->load->view('admin/listaCertificado_view',$dataSend);
     }
 
 }

@@ -15176,7 +15176,7 @@ ul.pro-amenities li span i{
 }
 
 .new-login-register .lg-info-panel {
-    width: 600px;
+    width: 45%;
 }
 
 .new-login-register .lg-info-panel .lg-content h2 {
@@ -15251,9 +15251,8 @@ ul.pro-amenities li span i{
 }
 
 .new-login-register .new-login-box {
-    margin-top: 8%;
+    margin-top: 1%;
 }
-
 .login-text-p {
     text-align: center;
     color: #666666 !important;
@@ -15289,3 +15288,13 @@ ul.pro-amenities li span i{
 }
 
 
+.logo-login {
+    width: 80%;
+    margin: auto;
+    display: block;
+}
+
+.text-login-p {
+    text-align: center;
+    margin-top: 25px;
+}

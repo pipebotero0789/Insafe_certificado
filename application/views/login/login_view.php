@@ -6,17 +6,14 @@
 <section id="wrapper" class="new-login-register">
       <div class="lg-info-panel">
               <div class="inner-panel">
-                  <a href="javascript:void(0)" class="p-20 di"><img src="<?php echo base_url() ?>File/plugins/images/admin-logo.png"></a>
-                  <div class="lg-content">
-                      <h2>Tecnología Below<br>The Line</h2>
-                      <p class="text-muted">Esta plataforma permite el diseño de activaciones, control de inventarios promocionales y gestión de bases de datos de consumidores; así como la integración de juegos digitales.</p>
-                  </div>
-                  <a href="javascript:void(0)" class="p-20 di by-link"><img src="<?php echo base_url() ?>File/plugins/images/by-link.png"></a>
+                  
               </div>
       </div>
       <div class="new-login-box">
                 <div class="white-box">
-                    <h3 class="box-title m-b-0 text-login">Bienvenido a <?= $this->NombreApp; ?></h3>
+                    <a href="javascript:void(0)" class="p-20 di"><img class="logo-login" src="<?php echo base_url() ?>File/plugins/images/admin-logo.png"></a>
+                    <h3 class="box-title m-b-0 text-login">CONSULTAS<BR>PARA CLIENTES</h3>
+                    <p class="text-login-p">Digite los siguientes datos para ingresar</p>
                   <form class="form-horizontal new-lg-form" id="loginform" action="<?php echo base_url() ?>Login/logeo" method='post'>
                     
                     <div class="form-group  m-t-20">

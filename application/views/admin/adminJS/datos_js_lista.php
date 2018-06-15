@@ -4,7 +4,7 @@
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print',
         ],
-        "pageLength": 100,
+        "pageLength": 50,
 		"language": {
     		"info": "Mostrando de _START_ a _END_ de _TOTAL_ registros",
     		"search": "Buscar:",

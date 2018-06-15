@@ -7,6 +7,7 @@ class Certificado extends MY_Controller {
     {
         parent::__construct();
         $this->load->model('crud/Crud_certificado');
+        $this->load->library('Spreadsheet_Excel_Reader');
         if (is_null($this->session->userdata('id'))) {
             redirect($this->index);
         }
@@ -47,7 +48,6 @@ class Certificado extends MY_Controller {
         if ($this->upload->do_upload('file')) {
             $data = $this->upload->data();
             @chmod($data['full_path'], 0777);   
-            $this->load->library('Spreadsheet_Excel_Reader');
             $this->spreadsheet_excel_reader->setOutputEncoding('CP1251');
             $this->spreadsheet_excel_reader->read($data['full_path']);
             $sheets = $this->spreadsheet_excel_reader->sheets[0];
@@ -55,11 +55,13 @@ class Certificado extends MY_Controller {
             $data_excel = array();
             for ($i = 2; $i <= $sheets['numRows']; $i++) {
                 if ($sheets['cells'][$i][1] == '') break;
-                $data_excel[$i - 1]['certificado_nombre']    = $sheets['cells'][$i][1];
-                $data_excel[$i - 1]['certificado_cedula']   = $sheets['cells'][$i][2];
+                $data_excel[$i - 1]['certificado_nombre'] = $sheets['cells'][$i][1];
+                $data_excel[$i - 1]['certificado_cedula'] = $sheets['cells'][$i][2];
                 $data_excel[$i - 1]['certificado_numero'] = $sheets['cells'][$i][3];
-                $data_excel[$i - 1]['certificado_expedicion'] = $sheets['cells'][$i][4];
-                $data_excel[$i - 1]['certificado_vencimiento'] = $sheets['cells'][$i][5];
+                $fecha_certificado = $this->dateadde('d', -1, $sheets['cells'][$i][4]);
+                $data_excel[$i - 1]['certificado_expedicion'] = $fecha_certificado;
+                $fecha_expedicion = $this->dateadde('d', -1, $sheets['cells'][$i][5]);
+                $data_excel[$i - 1]['certificado_vencimiento'] = $fecha_expedicion;
                 $data_excel[$i - 1]['estado_id'] = $sheets['cells'][$i][6];
             }
             $this->db->insert_batch('produccion_certificado', $data_excel);
@@ -71,6 +73,42 @@ class Certificado extends MY_Controller {
             $this->index($mensaje);
         }
     }
+
+    public function dateadde($interval, $number, $date) { 
+        $jour=substr($date, 0, 2); 
+        $mois=substr($date, 3, 2); 
+        $annee=substr($date, 6, 4); 
+        $adate = mktime(0,0,0,$mois,$jour,$annee); 
+        $date_time_array = getdate($adate); 
+        $hours = $date_time_array['hours']; 
+        $minutes = $date_time_array['minutes']; 
+        $seconds = $date_time_array['seconds']; 
+        $month = $date_time_array['mon']; 
+        $day = $date_time_array['mday']; 
+        $year = $date_time_array['year']; 
+        switch ($interval) { 
+            case 'yyyy': 
+                $year+=$number; 
+                break; 
+            case 'q': 
+                $year+=($number*3); 
+                break; 
+            case 'm': 
+                $month+=$number; 
+                break; 
+            case 'y': 
+            case 'd': 
+            case 'w': 
+                $day+=$number; 
+                break; 
+            case 'ww': 
+                $day+=($number*7); 
+                break; 
+        } 
+        $timestamp= mktime(0,0,0,$month,$day,$year);
+        $jourascii=strftime("%d/%m/%Y",$timestamp); 
+        return $jourascii; 
+    }  
 
      public function lista($mensaje = null){   
        $this->load->view('admin/sobrecargas/head_view');

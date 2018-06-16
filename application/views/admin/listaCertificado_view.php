@@ -29,7 +29,11 @@
                                                 <td><?php echo $key->certificado_cedula ?></td>
                                                 <td><?php echo $key->certificado_expedicion ?></td>
                                                 <td><?php echo $key->certificado_vencimiento ?></td>
-                                                <td><?php echo $key->estado_id = (1) ? 'Vigente' : 'Vencido' ; ?></td>
+                                                <td><?php if($key->estado_id == 1){ 
+                                                    echo 'Vigente';
+                                                }else{ 
+                                                    echo 'Vencido';
+                                                }?></td>
                                             </tr>
                                     <?php 
                                         } 

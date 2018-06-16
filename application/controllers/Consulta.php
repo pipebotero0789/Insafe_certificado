@@ -55,7 +55,6 @@ class Consulta extends MY_Controller {
 			$fecha2 = new DateTime($hoy['mday']."-".$hoy['mon']."-".$hoy['year']);
 			$interval = $fecha->diff($fecha2);
 			$diferencia = $interval->format('%R%a');
-			echo $interval->format('%R%a');
 			if ($diferencia >= 0) {
 				$datosSlide = array(
                 	'estado_id' => 2

@@ -21,6 +21,7 @@ class Consulta extends MY_Controller {
 
 	public function __construct() {
         parent::__construct();
+        $this->load->model('crud/Crud_certificado');
     }
 
 	public function index($mensaje = null,$bandera = null)
@@ -33,4 +34,53 @@ class Consulta extends MY_Controller {
 			$this->load->view('consulta/consulta_view', $dataSend);
 			$this->load->view('consulta/footer_view');
 	}
+
+	public function verificar(){
+		$cedula = $this->input->post('cedula');
+		$where = array(
+			'certificado_cedula' => $cedula,
+			'estado_id' => 1
+		);
+		$certificados = $this->Crud_certificado->GetDatos($where);
+		if (is_null($certificados)) {
+			$where = array(
+			'certificado_numero' => $cedula,
+			'estado_id' => 1
+			);
+			$certificados = $this->Crud_certificado->GetDatos($where);
+		}
+		foreach ($certificados as $key) {
+			$fecha = new DateTime($this->dateadde('d', 0, $key->certificado_vencimiento));
+			$hoy = getdate();
+			$fecha2 = new DateTime($hoy['mday']."-".$hoy['mon']."-".$hoy['year']);
+			$interval = $fecha->diff($fecha2);
+			$diferencia = $interval->format('%R%a');
+			echo $interval->format('%R%a');
+			if ($diferencia >= 0) {
+				$datosSlide = array(
+                	'estado_id' => 2
+                );
+		        $whereArray = array(
+		                'certificado_id' => $key->certificado_id
+		        );
+        		$this->Crud_certificado->editar($datosSlide, $whereArray);
+			}
+		}
+		$where = array(
+			'certificado_cedula' => $cedula
+		);
+		$certificados2 = $this->Crud_certificado->GetDatos($where);
+		if (is_null($certificados2)) {
+			$where = array(
+			'certificado_numero' => $cedula
+			);
+			$certificados2 = $this->Crud_certificado->GetDatos($where);
+		}
+		$datos = array(
+			'certificados' => $certificados2  
+		);
+		$this->load->view('consulta/respuesta_view', $datos);
+	}
+
+	
 }

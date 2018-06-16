@@ -11,11 +11,16 @@ class Crud_certificado extends CI_Model {
     }
 
     public function GetDatos($where = NULL){
-        return $this->Crud_model->obtenerRegistros('produccion_certificado',$where,'*')[0];
+        return $this->Crud_model->obtenerRegistros('produccion_certificado',$where,'*');
     }
 
     public function GetDatosTotal(){
         return $this->Crud_model->obtenerRegistros('produccion_certificado',null,'*');
+    }
+
+    public function editar($pArrayActualizar,$id)
+    {
+        return $this->Crud_model->actualizarRegistro('produccion_certificado',$pArrayActualizar,$id);
     }
 }
 

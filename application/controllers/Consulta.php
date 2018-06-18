@@ -79,23 +79,14 @@ class Consulta extends MY_Controller {
 		$datos = array(
 			'certificados' => $certificados2  
 		);
+		$this->load->view('consulta/head_view');
+		$this->load->view('consulta/consulta_view');
 		$this->load->view('consulta/respuesta_view', $datos);
+		$this->load->view('consulta/footer_view');
 	}
 
 	public function imprimir(){
 		$this->load->view('carta_view');
-		// Get output html
-       /* $html = $this->output->get_output();
-        // Load HTML content
-        $this->dompdf->loadHtml($html);
-        // (Optional) Setup the paper size and orientation
-        $this->dompdf->setPaper('letter', 'portrait');
-        
-        // Render the HTML as PDF
-        $this->dompdf->render();
-        
-        // Output the generated PDF (1 = download and 0 = preview)
-        $this->dompdf->stream("welcome.pdf", array("Attachment"=>0));*/
 	}
 
 }

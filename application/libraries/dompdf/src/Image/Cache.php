@@ -58,13 +58,11 @@ class Cache
     static function resolve_url($url, $protocol, $host, $base_path, Dompdf $dompdf)
     {
         self::$_dompdf = $dompdf;
-        
         $protocol = mb_strtolower($protocol);
         $parsed_url = Helpers::explode_url($url);
         $message = null;
 
-        $remote = ($protocol && $protocol !== "file://") || ($parsed_url['protocol'] != "");
-
+        $remote = ($protocol && $protocol !== "http://") || ($parsed_url['protocol'] != "");
         $data_uri = strpos($parsed_url['protocol'], "data:") === 0;
         $full_url = null;
         $enable_remote = $dompdf->getOptions()->getIsRemoteEnabled();

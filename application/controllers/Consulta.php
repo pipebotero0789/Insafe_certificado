@@ -22,6 +22,7 @@ class Consulta extends MY_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('crud/Crud_certificado');
+        $this->load->library('pdf');
     }
 
 	public function index($mensaje = null,$bandera = null)
@@ -81,5 +82,20 @@ class Consulta extends MY_Controller {
 		$this->load->view('consulta/respuesta_view', $datos);
 	}
 
-	
+	public function imprimir(){
+		$this->load->view('carta_view');
+		// Get output html
+       /* $html = $this->output->get_output();
+        // Load HTML content
+        $this->dompdf->loadHtml($html);
+        // (Optional) Setup the paper size and orientation
+        $this->dompdf->setPaper('letter', 'portrait');
+        
+        // Render the HTML as PDF
+        $this->dompdf->render();
+        
+        // Output the generated PDF (1 = download and 0 = preview)
+        $this->dompdf->stream("welcome.pdf", array("Attachment"=>0));*/
+	}
+
 }

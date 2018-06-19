@@ -2,6 +2,18 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<style>
+		@font-face {
+		  	font-family: 'Roboto';
+		    font-weight: normal;
+		    font-style: normal;
+		    font-variant: normal;
+		    src: url("<?php echo base_url() ?>File/fonts/Roboto-Regular.ttf") format("truetype");
+		}
+		body {
+		    font-family: Roboto, sans-serif;
+		}
+	</style>
 </head>
 <body style="padding:0px; margin: 0px">
 <table class="main k-table" data-type="image" id="66b53801-5799-cbbb-5362-ba9c90a43599" style="background-color: #ffffff; display: table;" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
@@ -15,7 +27,7 @@
 <table class="main k-table" data-type="image" id="66b53801-5799-cbbb-5362-ba9c90a43599" style="background-color: #ffffff; display: table;" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
 <tbody>
 <tr>
-<td class="image" style="padding: 0px 0px; display: block;width: 100%;height: 120px; font-family: arial" align="center"><strong>GLOBAL SAFETY SUPPLIES S.A.S</strong></td>
+<td class="image" style="padding: 0px 0px; display: block;width: 100%;height: 120px; " align="center"><strong>GLOBAL SAFETY SUPPLIES S.A.S</strong></td>
 </tr>
 </tbody>
 </table>
@@ -23,7 +35,7 @@
 <table class="main k-table" data-type="image" id="66b53801-5799-cbbb-5362-ba9c90a43599" style="background-color: #ffffff; display: table;" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
 <tbody>
 <tr>
-<td class="image" style="padding: 0px 0px; display: block;width: 100%;height: 120px; font-family: arial" align="center">CERTIFICA</td>
+<td class="image" style="padding: 0px 0px; display: block;width: 100%;height: 120px; " align="center">CERTIFICA</td>
 </tr>
 </tbody>
 </table>
@@ -31,7 +43,7 @@
 <table class="main k-table" data-type="image" id="66b53801-5799-cbbb-5362-ba9c90a43599" style="background-color: #ffffff; display: table;" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
 <tbody>
 <tr>
-<td class="image" style=" margin-left: 15%;margin-right: 15%; display: block; width: 100%;height: 180px; font-family: arial;text-align: justify;">Qué <span style="text-transform: uppercase; color: #e64d01;font-weight: bold;"><?php echo $certificados[0]->certificado_nombre ?></span> identificado(a) con cédula de ciudadanía<span style="color: #e64d01;font-weight: bold;"> No. </span><span style="text-transform: uppercase;color: #e64d01;font-weight: bold;"><?php echo $certificados[0]->certificado_cedula ?></span>,  realizó  y  aprobó  el  curso  de  PERSONA  COMPETENTE  PARA  LA REVISIÓN  E  INSPECCIÓN  DE  LOS  EQUIPOS  DE PROTECCIÓN  CONTRA  CAÍDAS  DE  LA MARCA INSAFE FALL PROTECCIÓN, número de certificado <span style="text-transform: uppercase;color: #e64d01;font-weight: bold;"><?php echo $certificados[0]->certificado_numero ?></span>, fecha de emisión a los <span style="color: #e64d01;font-weight: bold;"><?php echo $fechaExp ?></span>.</td>
+<td class="image" style=" margin-left: 15%;margin-right: 15%; display: block; width: 100%;height: 180px; ;text-align: justify;">Qué <span style="text-transform: uppercase; color: #e64d01;font-weight: bold;"><?php echo $certificados[0]->certificado_nombre ?></span> identificado(a) con cédula de ciudadanía<span style="color: #e64d01;font-weight: bold;"> No. </span><span style="text-transform: uppercase;color: #e64d01;font-weight: bold;"><?php echo $certificados[0]->certificado_cedula ?></span>,  realizó  y  aprobó  el  curso  de  PERSONA  COMPETENTE  PARA  LA REVISIÓN  E  INSPECCIÓN  DE  LOS  EQUIPOS  DE PROTECCIÓN  CONTRA  CAÍDAS  DE  LA MARCA INSAFE FALL PROTECCIÓN, número de certificado <span style="text-transform: uppercase;color: #e64d01;font-weight: bold;"><?php echo $certificados[0]->certificado_numero ?></span>, fecha de emisión a los <span style="color: #e64d01;font-weight: bold;"><?php echo $fechaExp ?></span>.</td>
 </tr>
 </tbody>
 </table>
@@ -39,7 +51,7 @@
 <table class="main k-table" data-type="image" id="66b53801-5799-cbbb-5362-ba9c90a43599" style="background-color: #ffffff; display: table;" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
 <tbody>
 <tr>
-<td class="image" style=" margin-left: 15%;margin-right: 15%;padding: 0px 0px; display: block;width: 100%;height: 60px; font-family: arial" align="justify">ESTADO: <span style="text-transform: uppercase;color: #e64d01;font-weight: bold;">
+<td class="image" style=" margin-left: 15%;margin-right: 15%;padding: 0px 0px; display: block;width: 100%;height: 60px; " align="justify">ESTADO: <span style="text-transform: uppercase;color: #e64d01;font-weight: bold;">
 	<?php if($certificados[0]->estado_id == 1){ 
 		echo 'Vigente'; 
 	}else{ 
@@ -52,7 +64,7 @@
 <table class="main k-table" data-type="image" id="66b53801-5799-cbbb-5362-ba9c90a43599" style="background-color: #ffffff; display: table;" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
 <tbody>
 <tr>
-<td class="image" style=" margin-left: 15%;margin-right: 15%;padding: 0px 0px; display: block;width: 100%;height: 150px; font-family: arial" align="justify">Este documento se realiza a los <span style="color: #e64d01;font-weight: bold;"><?php echo $fechaHoy ?> </span> </td>
+<td class="image" style=" margin-left: 15%;margin-right: 15%;padding: 0px 0px; display: block;width: 100%;height: 150px; " align="justify">Este documento se realiza a los <span style="color: #e64d01;font-weight: bold;"><?php echo $fechaHoy ?> </span> </td>
 </tr>
 </tbody>
 </table>
@@ -60,7 +72,7 @@
 <table class="main k-table" data-type="image" id="66b53801-5799-cbbb-5362-ba9c90a43599" style="background-color: #ffffff; display: table;" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
 <tbody>
 <tr>
-<td class="image" style=" margin-left: 15%;margin-right: 15%;padding: 0px 0px; display: block;width: 100%;height: 30px; font-family: arial" align="justify">
+<td class="image" style=" margin-left: 15%;margin-right: 15%;padding: 0px 0px; display: block;width: 100%;height: 30px; " align="justify">
 	Firmado digitalmente por<br>
 	Daniel Felipe Jaimes Martínez<br>
 	GERENTE GENERAL<br>

@@ -122,4 +122,7 @@
   'linea-weather-10' => array(
     'normal' => $fontDir . '/ab154af30d1c0451d10e338dc1d2ff99',
   ),
+  'elegance' => array(
+    'normal' => $fontDir . '/6f19c9e3a03bf4bfd9187749fb698cbe',
+  ),
 ) ?>

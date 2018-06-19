@@ -106,6 +106,23 @@ class Consulta extends MY_Controller {
 			'fechaHoy' => $fechaHoy
 		);
 		$this->load->view('carta_view', $datos);
+		
+		 // Get output html
+        $html = $this->output->get_output();
+		// Load pdf library
+        $this->load->library('pdf');
+        
+        // Load HTML content
+        $this->dompdf->loadHtml($html);
+        
+        // (Optional) Setup the paper size and orientation
+        $this->dompdf->setPaper('legal', 'portrait');
+        
+        // Render the HTML as PDF
+        $this->dompdf->render();
+        
+        // Output the generated PDF (1 = download and 0 = preview)
+        $this->dompdf->stream($certificados2[0]->certificado_numero.".pdf", array("Attachment"=>0));
 	}
 
 	public function fechas($date) { 
@@ -153,7 +170,7 @@ class Consulta extends MY_Controller {
 	         		# code...
 	         		break;
 	        } 
-	        $fechaTexto = 'fecha de emisión a los '.$jour.' días del mes de '.$mes.' del '.$annee;
+	        $fechaTexto = $jour.' días del mes de '.$mes.' del '.$annee;
 	        return $fechaTexto;	
     }
 
@@ -202,7 +219,7 @@ class Consulta extends MY_Controller {
 	         		# code...
 	         		break;
 	        } 
-	        $fechaTexto = 'Este documento se realiza a los '.$jour.' días del mes de '.$mes.' del '.$annee;
+	        $fechaTexto = $jour.' días del mes de '.$mes.' del '.$annee;
 	        return $fechaTexto;	
     }
 

@@ -88,7 +88,6 @@ class Consulta extends MY_Controller {
 			);
 		}
 		$this->load->view('consulta/head_view');
-		$this->load->view('consulta/consulta_view');
 		$this->load->view('consulta/respuesta_view', $datos);
 		$this->load->view('consulta/footer_view');
 	}

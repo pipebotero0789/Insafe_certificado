@@ -40,13 +40,11 @@ class Consulta extends MY_Controller {
 		$cedula = $this->input->post('cedula');
 		$where = array(
 			'certificado_cedula' => $cedula,
-			'estado_id' => 1
 		);
 		$certificados = $this->Crud_certificado->GetDatos($where);
 		if (is_null($certificados)) {
 			$where = array(
 			'certificado_numero' => $cedula,
-			'estado_id' => 1
 			);
 			$certificados = $this->Crud_certificado->GetDatos($where);
 		}

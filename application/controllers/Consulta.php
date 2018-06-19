@@ -50,35 +50,43 @@ class Consulta extends MY_Controller {
 			);
 			$certificados = $this->Crud_certificado->GetDatos($where);
 		}
-		foreach ($certificados as $key) {
+		if (!is_null($certificados)) {
+			foreach ($certificados as $key) {
 			$fecha = new DateTime($this->dateadde('d', 0, $key->certificado_vencimiento));
 			$hoy = getdate();
 			$fecha2 = new DateTime($hoy['mday']."-".$hoy['mon']."-".$hoy['year']);
 			$interval = $fecha->diff($fecha2);
 			$diferencia = $interval->format('%R%a');
-			if ($diferencia >= 0) {
-				$datosSlide = array(
-                	'estado_id' => 2
-                );
-		        $whereArray = array(
-		                'certificado_id' => $key->certificado_id
-		        );
-        		$this->Crud_certificado->editar($datosSlide, $whereArray);
+				if ($diferencia >= 0) {
+					$datosSlide = array(
+	                	'estado_id' => 2
+	                );
+			        $whereArray = array(
+			                'certificado_id' => $key->certificado_id
+			        );
+	        		$this->Crud_certificado->editar($datosSlide, $whereArray);
+				}
 			}
-		}
-		$where = array(
-			'certificado_cedula' => $cedula
-		);
-		$certificados2 = $this->Crud_certificado->GetDatos($where);
-		if (is_null($certificados2)) {
 			$where = array(
-			'certificado_numero' => $cedula
+				'certificado_cedula' => $cedula
 			);
 			$certificados2 = $this->Crud_certificado->GetDatos($where);
+			if (is_null($certificados2)) {
+				$where = array(
+				'certificado_numero' => $cedula
+				);
+				$certificados2 = $this->Crud_certificado->GetDatos($where);
+			}
+			$datos = array(
+				'certificados' => $certificados2, 
+				'mensaje' => '' 
+			);
+		}else{
+			$datos = array(
+				'certificados' => NULL, 
+				'mensaje' => 'No se encuentra el docmuento' 
+			);
 		}
-		$datos = array(
-			'certificados' => $certificados2  
-		);
 		$this->load->view('consulta/head_view');
 		$this->load->view('consulta/consulta_view');
 		$this->load->view('consulta/respuesta_view', $datos);

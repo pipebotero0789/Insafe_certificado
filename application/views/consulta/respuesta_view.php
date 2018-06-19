@@ -23,13 +23,14 @@
 						}else{ 
 							echo 'Vencido';
 						}?></td>
-						<td><a href="<?php echo base_url() ?>Certificado/imprimir/<?php echo $key->certificado_id?>"><button>Ver Certificado</button></a></td>
+						<td><a href="<?php echo base_url() ?>Consulta/imprimir/<?php echo $key->certificado_id?>" target="_blank"><button>Ver Certificado</button></a></td>
 	                </tr>
 	        <?php 
 	            } 
 	        }else { ?>
-	        <h5 style="font-family: helvetica;background: #d1d1d1;padding: 10px;border-radius: 5px;font-weight: normal;width: 368px;">No se encontraron resultados de este certificado</h5>
+	        <h5 style="font-family: helvetica;background: #d1d1d1;padding: 10px;border-radius: 5px;font-weight: normal;width: 368px;">No se encontraron resultados de este número de certificado ó número de documento</h5>
 	                <tr>
+	                    <td>N/A</td>
 	                    <td>N/A</td>
 	                    <td>N/A</td>
 	                    <td>N/A</td>

@@ -23,6 +23,7 @@
 						}else{ 
 							echo 'Vencido';
 						}?></td>
+						<td><a href="<?php echo base_url() ?>Certificado/imprimir/<?php echo $key->certificado_id?>"><button>Ver Certificado</button></a></td>
 	                </tr>
 	        <?php 
 	            } 

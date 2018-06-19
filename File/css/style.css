@@ -26,3 +26,26 @@ header {
     padding: 14px;
 }
 
+table button {
+    background: #de5514;
+    padding: 4px 18px;
+    border-width: 0px;
+    border-radius: 4px;
+    color: #fff;
+    margin: auto;
+    display: block;
+}
+table td {
+    padding: 10px;
+}
+
+table tr, td {
+    border: 1px #d1d1d1 solid;
+}
+
+table thead td {
+    font-weight: 600;
+}
+
+table {margin-top: 10px;}
+

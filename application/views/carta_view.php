@@ -7,7 +7,7 @@
 <table class="main k-table" data-type="image" id="66b53801-5799-cbbb-5362-ba9c90a43599" style="background-color: #ffffff; display: table;" width="1100" cellspacing="0" cellpadding="0" border="0" align="center">
 <tbody>
 <tr>
-<td class="image" style="padding: 0px 0px; display: block;" align="center" data-maxwidth="600"><img style="padding: 0px 0px; display: block;"  id="img" loop="loop" src="http://insafe.web/File/plugins/images/logo.svg" width="1100" height="220" border="0" align="one_image" tabindex="0" /></td>
+<td class="image" style="padding: 0px 0px; display: block;" align="center" data-maxwidth="600"><img style="padding: 0px 0px; display: block;"  id="img" loop="loop" src="<?php echo base_url() ?>/File/plugins/images/logo.svg" width="1100" height="220" border="0" align="one_image" tabindex="0" /></td>
 </tr>
 </tbody>
 </table>
